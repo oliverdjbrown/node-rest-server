@@ -1,11 +1,12 @@
 const express = require("express");
 const cors = require('cors');
+const defaultPort = '3000';
 
 class Server {
   
   constructor() {
     this.app = express();
-    this.port = process.env.PORT;
+    this.port = process.env.PORT || defaultPort;
 
     //MiddleWares
     this.middleWares();
