@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require('cors');
+const { dbConnection } = require("../database/config.db");
+const { authPath, userPath } = require("../const/url/api_url");
 const defaultPort = '3000';
 
 class Server {
@@ -8,11 +10,18 @@ class Server {
     this.app = express();
     this.port = process.env.PORT || defaultPort;
 
+    //Database
+    this.connectDB();
+    
     //MiddleWares
     this.middleWares();
 
     //App Routes
     this.routes();
+  }
+
+  async connectDB() {
+    await dbConnection();
   }
 
   middleWares() {
@@ -26,8 +35,9 @@ class Server {
     this.app.use(express.static("public"));
   }
 
-  routes() {
-    this.app.use('/api/users', require('../routes/user.routes'));
+  routes() {    
+    this.app.use(authPath, require('../routes/auth.routes'));
+    this.app.use(userPath, require('../routes/user.routes'));
   }
 
   listen() {
