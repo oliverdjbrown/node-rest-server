@@ -1,5 +1,5 @@
 const { request, response } = require("express");
-const hashPassword = require("../helpers/hash-password");
+const { hashPassword } = require("../helpers/hash-password");
 const User = require("../models/user.model");
 
 const usersGet = async (req = request, res = response) => {
@@ -47,23 +47,17 @@ const userPut = async (req, res = response) => {
   });
 };
 
-const userPatch = (req, res = response) => {
-  res.json({
-    message: "patch API",
-  });
-};
-
 const userDelete = async(req, res = response) => {
-  const id = req.params.id;
+  const id = req.params.id;  
 
   //permanent delete
   //const user = await User.findByIdAndDelete(id);
   
   //soft delete
-  const user = await User.findByIdAndUpdate(id, {state: false});
+  const user = await User.findByIdAndUpdate(id, {state: false});  
 
   res.json({    
-    user
+    user    
   });
 };
 
@@ -71,6 +65,5 @@ module.exports = {
   usersGet,
   userPost,
   userPut,
-  userPatch,
   userDelete,
 };

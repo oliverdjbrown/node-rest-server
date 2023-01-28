@@ -1,5 +1,6 @@
 const api = require('./base_url');
 
-const user = `/${api}/users`
+const authPath = `${api}/auth`;
+const userPath = `${api}/users`;
 
-module.exports = { user }
+module.exports = { authPath, userPath }
