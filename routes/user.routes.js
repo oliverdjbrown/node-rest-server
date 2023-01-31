@@ -28,7 +28,9 @@ router.get("/", usersGet);
 router.post(
   "/",
   [
+    //Middlewares
     validateJWT,
+    //Validations
     check("name", "name is requerid").not().isEmpty(),
     check("password", "password is shorter than 6 characters").isLength({
       min: 6,
