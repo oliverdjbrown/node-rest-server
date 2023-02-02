@@ -6,6 +6,7 @@ const path = {
     products: `${api}/products`,
     search: `${api}/search`,
     users: `${api}/users`,
+    uploads: `${api}/uploads`,
 };
 
 
