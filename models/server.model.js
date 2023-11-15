@@ -4,7 +4,7 @@ const fileUpload = require("express-fileupload");
 const { dbConnection } = require("../database/config.db");
 const { socketController } = require("../sockets/controller");
 
-const path = require("../const/url/api_url");
+const api = require("../const/url/base_url");
 const defaultPort = "3000";
 
 class Server {
@@ -15,13 +15,10 @@ class Server {
 
     //Database
     this.connectDB();
-
     //MiddleWares
     this.middleWares();
-
     //App Routes
     this.routes();
-
     //Sockets
     this.sockets();
   }
@@ -33,13 +30,10 @@ class Server {
   middleWares() {
     //Cors
     this.app.use(cors());
-
     //Read and Body Parse
     this.app.use(express.json());
-
     //Public Directory
     this.app.use(express.static("public"));
-
     //FileUpload
     this.app.use(
       fileUpload({
@@ -51,12 +45,7 @@ class Server {
   }
 
   routes() {
-    this.app.use(path.auth, require("../routes/auth.routes"));
-    this.app.use(path.search, require("../routes/search.routes"));
-    this.app.use(path.categories, require("../routes/categories.routes"));
-    this.app.use(path.products, require("../routes/products.routes"));
-    this.app.use(path.users, require("../routes/user.routes"));
-    this.app.use(path.uploads, require("../routes/uploads.routes"));
+    this.app.use(`${api}`, require('../routes'));
   }
 
   sockets() {

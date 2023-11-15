@@ -57,8 +57,7 @@ const categoryPut = async (req, res = response) => {
 
 const categoryDelete = async (req, res = response) => {
   const {id} = req.params;  
-  
-  //soft delete
+
   const category = await Category.findByIdAndUpdate(id, {state: false}, {new: true});  
 
   res.json({    

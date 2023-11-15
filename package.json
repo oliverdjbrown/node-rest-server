@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,16 +13,16 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "cloudinary": "^1.33.0",
+    "cloudinary": "^1.41.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "express-fileupload": "^1.4.0",
-    "express-validator": "^6.14.3",
-    "google-auth-library": "^8.7.0",
-    "jsonwebtoken": "^9.0.0",
-    "mongoose": "^6.9.0",
-    "socket.io": "^4.6.0",
-    "uuid": "^9.0.0"
+    "express-fileupload": "^1.4.2",
+    "express-validator": "^7.0.1",
+    "google-auth-library": "^9.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.0",
+    "socket.io": "^4.7.2",
+    "uuid": "^9.0.1"
   }
 }
