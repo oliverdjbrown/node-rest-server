@@ -14,7 +14,6 @@ router.put('/:collection/:id',[
     check('collection').custom(c => allowedCollections(c, ['users', 'products'])),
     validateFields
 ], updatePictureCloudinary);
-//], updateUpload);
 
 router.get('/:collection/:id',[    
     check("id", "is not a valid id").isMongoId(),
