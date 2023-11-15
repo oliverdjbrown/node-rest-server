@@ -61,7 +61,6 @@ const productPut = async (req, res = response) => {
 const productDelete = async (req, res = response) => {
   const {id} = req.params;  
   
-  //soft delete
   const product = await Product.findByIdAndUpdate(id, {state: false}, {new: true});  
 
   res.json({    
