@@ -22,7 +22,7 @@ const login = async (req, res = response) => {
     if(!comparePassword(password, user.password)) return res.status(400).json(invalidUserOrPassword);
 
     //generate JWT
-    const token = await generateJWT(user.id);
+    const token = await generateJWT(user._id.toString());
 
     res.status(200).json({
       user,

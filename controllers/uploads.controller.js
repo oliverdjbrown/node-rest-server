@@ -2,7 +2,7 @@ const { response } = require("express");
 const path = require("path");
 const fs = require("fs");
 const cloudinary = require("cloudinary").v2;
-cloudinary.config(process.env.CLOUDINARY_URL,)
+cloudinary.config(process.env.CLOUDINARY_URL);
 
 const { uploadFileHelper } = require("../helpers");
 const { User, Product } = require("../models");
@@ -42,7 +42,7 @@ const updateUpload = async (req, res = response) => {
 
   if (model.img) {
     const pathImg = path.join(__dirname, "../uploads", collection, model.img);
-    
+
     try {
       if (fs.existsSync(pathImg)) {
         fs.unlinkSync(pathImg);
@@ -86,23 +86,23 @@ const updatePictureCloudinary = async (req, res = response) => {
   }
 
   if (model.img) {
-    const nameArr = modelo.img.split('/');
-    const name = nameArr[ nameArr.length - 1 ];
-    const [ public_id ] = name.split('.');
-    cloudinary.uploader.destroy( public_id );
+    const nameArr = modelo.img.split("/");
+    const name = nameArr[nameArr.length - 1];
+    const [public_id] = name.split(".");
+    cloudinary.uploader.destroy(public_id);
   }
 
   const { tempFilePath } = req.files.file;
-  const {secure_url} = await cloudinary.uploader.upload(tempFilePath);
-  
+  const { secure_url } = await cloudinary.uploader.upload(tempFilePath);
+
   model.img = secure_url;
-  
+
   await model.save();
 
-  res.status(200).json({secure_url});
+  res.status(200).json({ secure_url });
 };
 
-const showImages = async(req, res = response) => {
+const showImages = async (req, res = response) => {
   const { collection, id } = req.params;
 
   let model;
@@ -124,7 +124,7 @@ const showImages = async(req, res = response) => {
 
   if (model.img) {
     const pathImg = path.join(__dirname, "../uploads", collection, model.img);
-    
+
     if (fs.existsSync(pathImg)) {
       return res.sendFile(pathImg);
     }
@@ -132,11 +132,11 @@ const showImages = async(req, res = response) => {
 
   const pathImg = path.join(__dirname, "../assets/no-image.jpg");
   return res.sendFile(pathImg);
-}
+};
 
 module.exports = {
   uploads,
   updateUpload,
   showImages,
-  updatePictureCloudinary
+  updatePictureCloudinary,
 };

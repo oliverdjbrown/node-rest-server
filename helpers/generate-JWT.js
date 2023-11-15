@@ -4,7 +4,7 @@ const { User } = require('../models');
 const generateJWT = (uid = '') => {
     return new Promise((resolve, reject) => {
         const payload = { uid };
-        jwt.sign(payload, process.env.SECRETORPRIVATEKEY, {
+        jwt.sign(payload, process.env.JWT_KEY, {
             expiresIn: '24h'
         }, (error, token)=> {
             if(error) {
@@ -22,7 +22,7 @@ const validateJWT = async(token = '') => {
         
         if(token.length < 10) return null
 
-        const {uid} = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+        const {uid} = jwt.verify(token, process.env.JWT_KEY);
         const user = await User.findById(uid);
 
         if(!user.state) return null

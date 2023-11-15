@@ -1,3 +1,3 @@
-const api = '/api';
+const api = '/api/v1';
 
 module.exports = api;
