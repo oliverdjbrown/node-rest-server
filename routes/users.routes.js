@@ -31,17 +31,14 @@ router.get(
 
 router.post(
   "/",
-  [
-    //Middlewares
-    validateJWT,
-    //Validations
+  [    
+    validateJWT,   
     check("name", "name is requerid").not().isEmpty(),
     check("password", "password is shorter than 6 characters").isLength({
       min: 6,
     }),
     check("email", "Email is not valid").isEmail(),
-    check("email").custom(emailExist),
-    //check('role', 'rol is not valid').isIn('ADMIN_ROLE, USER_ROLE'),
+    check("email").custom(emailExist),    
     check("rol").custom(isRole),
     validateFields,
   ],
@@ -63,7 +60,7 @@ router.delete(
   "/:id",
   [
     validateJWT,
-    //isAdmin,
+    isAdmin,
     hasRole("ADMIN_ROLE", "SALE_ROLE"),
     check("id", "is not a valid id").isMongoId(),
     check("id").custom(userExistById),

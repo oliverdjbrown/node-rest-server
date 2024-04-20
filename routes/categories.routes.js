@@ -14,10 +14,9 @@ const { categoryExistById } = require("../helpers/db-validators");
 
 const router = Router();
 
-//get categories - public route
+
 router.get("/", categoryGet);
 
-//get a category by id - public route
 router.get(
   "/:id",
   [
@@ -28,20 +27,16 @@ router.get(
   categoryByIdGet
 );
 
-//create category - private route
 router.post(
   "/",
   [
     validateJWT,
-    check("category", "category is required").not().isEmpty(),
-    //check('state', 'state is required').not().isEmpty(),
-    //check('user', 'user is required').not().isEmpty(),
+    check("category", "category is required").not().isEmpty(),    
     validateFields,
   ],
   categoryPost
 );
 
-//update a category by id - private route
 router.put(
   "/:id",
   [
@@ -53,7 +48,6 @@ router.put(
   categoryPut
 );
 
-//delete a category by id - private route
 router.delete("/:id", [
     validateJWT, 
     isAdmin,

@@ -35,13 +35,7 @@ class Server {
     //Public Directory
     this.app.use(express.static("public"));
     //FileUpload
-    this.app.use(
-      fileUpload({
-        useTempFiles: true,
-        tempFileDir: "/tmp/",
-        createParentPath: true,
-      })
-    );
+    this.fileUpload();
   }
 
   routes() {
@@ -50,6 +44,16 @@ class Server {
 
   sockets() {
     this.io.on("connection", (socket) => socketController(socket, this.io));
+  }
+
+  fileUpload() {
+    this.app.use(
+      fileUpload({
+        useTempFiles: true,
+        tempFileDir: "/tmp/",
+        createParentPath: true,
+      })
+    );
   }
 
   listen() {
