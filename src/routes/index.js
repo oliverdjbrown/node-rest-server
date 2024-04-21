@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const fs = require("fs");
+const { status404 } = require("../../constants/messages/http-responses");
 
 const pathRouter = `${__dirname}`;
 
@@ -18,8 +19,10 @@ fs.readdirSync(pathRouter).filter((file) => {
 });
 
 router.get("*", (req, res) => {
-  res.status(404);
-  res.send({ error: "Not found" });
+  const { code, message } = status404;
+  
+  res.status(code);
+  res.send(message);
 });
 
 module.exports = router;

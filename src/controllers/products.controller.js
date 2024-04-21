@@ -1,6 +1,6 @@
 const { response } = require("express");
 const { Product } = require("../models");
-const { productExist } = require("../const/messages");
+const { productExist } = require("../../constants/messages");
 
 const productGet = async (req = request, res = response) => {
   const { limit = 5, skip = 0 } = req.query;

@@ -1,9 +1,11 @@
 const { response } = require("express");
 const { ObjectId } = require("mongoose").Types;
-const { collectionExist, status503 } = require("../const/messages");
+const { collectionExist, httpResponses } = require("../../constants/messages");
 const { User, Category, Product } = require("../models");
 
 const allowedCollections = ["users", "categories", "products", "roles"];
+
+const { status503 } = httpResponses;
 
 const searchUsers = async (term = "", res = response) => {
   const isMongoId = ObjectId.isValid(term);
@@ -76,7 +78,7 @@ const search = (req, res = response) => {
       searchProducts(term, res);
       break;
     default:
-      return res.status(500).json(status503);
+      return res.status(status503.code).json(status503.message);
   }
 };
 
