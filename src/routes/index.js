@@ -12,6 +12,7 @@ const removeExtension = (fileName) => {
 fs.readdirSync(pathRouter).filter((file) => {
   const fileWithOutExt = removeExtension(file);  
   const skip = ["index"].includes(fileWithOutExt);
+  
   if (!skip) {
     router.use(`/${fileWithOutExt}`, require(`./${fileWithOutExt}.routes`));
     console.log("Loading route =>", fileWithOutExt);
@@ -21,8 +22,7 @@ fs.readdirSync(pathRouter).filter((file) => {
 router.get("*", (req, res) => {
   const { code, message } = status404;
   
-  res.status(code);
-  res.send(message);
+  res.status(code).send(message);  
 });
 
 module.exports = router;
