@@ -1,4 +1,4 @@
-const {User, Role, Category, Product} = require("../models");
+const {User, Role, Category, Product} = require("../src/models");
 
 const isRole = async (rol = "") => {
   const roleExist = await Role.findOne({ rol });

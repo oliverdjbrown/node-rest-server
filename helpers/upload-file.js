@@ -1,6 +1,6 @@
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
-const { fileExtension } = require("../const/messages");
+const { fileExtension } = require("../constants/messages");
 const validFileExtension = ["png", "jpg", "jpeg", "gif"];
 
 const uploadFileHelper = (files, validExtensions = validFileExtension, folder = '') => {

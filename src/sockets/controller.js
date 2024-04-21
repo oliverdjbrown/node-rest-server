@@ -1,5 +1,5 @@
 const { Socket } = require("socket.io");
-const { validateJWT } = require('../helpers')
+const { validateJWT } = require('../../helpers')
 
 const socketController = async (socket = new Socket(), io) => {
       const token = socket.handshake.headers['jwt'];

@@ -12,7 +12,7 @@ const {
   isRole,
   emailExist,
   userExistById,
-} = require("../helpers/db-validators");
+} = require("../../helpers/db-validators");
 
 const {
   usersGet,

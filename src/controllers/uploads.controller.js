@@ -4,16 +4,17 @@ const fs = require("fs");
 const cloudinary = require("cloudinary").v2;
 cloudinary.config(process.env.CLOUDINARY_URL);
 
-const { uploadFileHelper } = require("../helpers");
+const { uploadFileHelper } = require("../../helpers");
 const { User, Product } = require("../models");
 
-const { fileNotExist, status500, status400 } = require("../const/messages");
+const { httpResponses } = require("../../constants/messages");
 
-const uploads = async (req, res = response) => {
-  const allowedExtensions = ["txt", "md"];
-  try {
-    //const file = await uploadFileHelper(req.files, allowedExtensions);
+const {status400, status500} = httpResponses;
+
+const uploads = async (req, res = response) => {  
+  try {    
     const file = await uploadFileHelper(req.files, undefined, "img");
+
     res.status(200).json(file);
   } catch (err) {
     res.status(400).json(err);
@@ -28,16 +29,16 @@ const updateUpload = async (req, res = response) => {
   switch (collection) {
     case "users":
       model = await User.findById(id);
-      if (!model) return res.status(400).json(status400);
+      if (!model) return res.status(status400.code).json(status400.message);
 
       break;
     case "products":
       model = await Product.findById(id);
-      if (!model) return res.status(400).json(status400);
+      if (!model) return res.status(status400.code).json(status400.message);
 
       break;
     default:
-      return res.status(500).json(status500);
+      return res.status(status500.code).json(status500.message);
   }
 
   if (model.img) {
@@ -73,16 +74,16 @@ const updatePictureCloudinary = async (req, res = response) => {
   switch (collection) {
     case "users":
       model = await User.findById(id);
-      if (!model) return res.status(400).json(status400);
+      if (!model) return res.status(status400.code).json(status400.message);
 
       break;
     case "products":
       model = await Product.findById(id);
-      if (!model) return res.status(400).json(status400);
+      if (!model) return res.status(status400.code).json(status400.message);
 
       break;
     default:
-      return res.status(500).json(status500);
+      return res.status(status500.code).json(status500.message);
   }
 
   if (model.img) {
@@ -110,16 +111,16 @@ const showImages = async (req, res = response) => {
   switch (collection) {
     case "users":
       model = await User.findById(id);
-      if (!model) return res.status(400).json(status400);
+      if (!model) return res.status(status400.code).json(status400.message);
 
       break;
     case "products":
       model = await Product.findById(id);
-      if (!model) return res.status(400).json(status400);
+      if (!model) return res.status(status400.code).json(status400.message);
 
       break;
     default:
-      return res.status(500).json(status500);
+      return res.status(status500.code).json(status500.message);
   }
 
   if (model.img) {

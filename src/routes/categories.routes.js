@@ -10,7 +10,7 @@ const {
   categoryDelete,
 } = require("../controllers/categories.controller");
 
-const { categoryExistById } = require("../helpers/db-validators");
+const { categoryExistById } = require("../../helpers/db-validators");
 
 const router = Router();
 

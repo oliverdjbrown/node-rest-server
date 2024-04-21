@@ -1,5 +1,5 @@
 const { request, response } = require("express");
-const { hashPassword } = require("../helpers/hash-password");
+const { hashPassword } = require("../../helpers/hash-password");
 const { User } = require("../models");
 
 const usersGet = async (req = request, res = response) => {
