@@ -1,9 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
-const { dbConnection } = require("../../config/database/config.db");
-const { socketController } = require("../sockets/controller");
-const api = require("../../constants/api/api.url");
+const { dbConnection } = require("../../config");
+const { socketController } = require("../sockets");
+const api = require("../../constants");
 
 const defaultPort = 3000;
 
