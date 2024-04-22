@@ -7,7 +7,7 @@ cloudinary.config(process.env.CLOUDINARY_URL);
 const { uploadFileHelper } = require("../../helpers");
 const { User, Product } = require("../models");
 
-const { httpResponses } = require("../../constants/messages");
+const { httpResponses } = require("../../constants");
 
 const {status400, status500} = httpResponses;
 

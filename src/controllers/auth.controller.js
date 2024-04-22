@@ -1,14 +1,14 @@
 const { response } = require("express");
-const { comparePassword } = require("../../helpers/hash-password");
-const { generateJWT } = require("../../helpers/generate-JWT");
-const { googleVerify } = require("../../helpers/google-verify");
+const { comparePassword } = require("../../helpers");
+const { generateJWT } = require("../../helpers");
+const { googleVerify } = require("../../helpers");
 
-const User = require("../models/user.model");
+const User = require("../models");
 const {
   contactAdmin,  
   invalidUserOrPassword,
   invalidUser,
-} = require("../../constants/messages");
+} = require("../../constants");
 
 const login = async (req, res = response) => {
   const { email, password } = req.body;

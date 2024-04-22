@@ -12,14 +12,14 @@ const {
   isRole,
   emailExist,
   userExistById,
-} = require("../../helpers/db-validators");
+} = require("../../helpers");
 
 const {
   usersGet,
   userPost,
   userPut,
   userDelete,
-} = require("../controllers/users.controller");
+} = require("../controllers");
 
 const router = Router();
 

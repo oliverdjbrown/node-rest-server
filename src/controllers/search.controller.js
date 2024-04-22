@@ -1,6 +1,6 @@
 const { response } = require("express");
 const { ObjectId } = require("mongoose").Types;
-const { collectionExist, httpResponses } = require("../../constants/messages");
+const { collectionExist, httpResponses } = require("../../constants");
 const { User, Category, Product } = require("../models");
 
 const allowedCollections = ["users", "categories", "products", "roles"];
