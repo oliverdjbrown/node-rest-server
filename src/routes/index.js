@@ -15,7 +15,7 @@ fs.readdirSync(pathRouter).filter((file) => {
   
   if (!skip) {
     router.use(`/${fileWithOutExt}`, require(`./${fileWithOutExt}.routes`));
-    console.log("Loading route =>", fileWithOutExt);
+    console.log("Loading route =>", `${api}/${fileWithOutExt}`);
   }
 });
 
