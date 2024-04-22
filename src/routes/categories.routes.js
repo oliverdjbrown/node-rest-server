@@ -8,7 +8,7 @@ const {
   categoryGet,
   categoryByIdGet,
   categoryDelete,
-} = require("../controllers/categories.controller");
+} = require("../controllers");
 
 const { categoryExistById } = require("../../helpers/db-validators");
 

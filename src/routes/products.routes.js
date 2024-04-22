@@ -8,7 +8,7 @@ const {
   productGet,
   productByIdGet,
   productDelete,
-} = require("../controllers/products.controller");
+} = require("../controllers");
 
 const { productExistById, categoryExistById } = require("../../helpers");
 
