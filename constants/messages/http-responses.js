@@ -36,7 +36,7 @@ const fileUploaded = { message: "File uploaded." };
 const fileExtension = { message: "File extension not allowed." };
 
 module.exports = {
-  httpResponses,  
+  ...httpResponses,
   contactAdmin,
   invalidUser,
   invalidUserOrPassword,

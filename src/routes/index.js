@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const fs = require("fs");
-const { status404 } = require("../../constants/messages/http-responses");
+const { status404 } = require("../../constants");
 
 const pathRouter = `${__dirname}`;
 
@@ -14,8 +14,7 @@ fs.readdirSync(pathRouter).filter((file) => {
   const skip = ["index"].includes(fileWithOutExt);
   
   if (!skip) {
-    router.use(`/${fileWithOutExt}`, require(`./${fileWithOutExt}.routes`));
-    console.log("Loading route =>", fileWithOutExt);
+    router.use(`/${fileWithOutExt}`, require(`./${fileWithOutExt}.routes`));    
   }
 });
 

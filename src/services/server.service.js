@@ -1,9 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
+const expressListEndpoints = require("express-list-endpoints");
 const { dbConnection } = require("../../config");
 const { socketController } = require("../sockets");
-const api = require("../../constants");
+const { api } = require("../../constants");
 
 const defaultPort = 3000;
 
@@ -39,7 +40,8 @@ class Server {
   }
 
   routes() {
-    this.app.use(`${api}`, require('../routes'));
+    this.app.use(api, require('../routes'));
+    console.log('Endpoints List:', expressListEndpoints(this.app))
   }
 
   sockets() {
