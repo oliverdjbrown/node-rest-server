@@ -1,6 +1,6 @@
 # Node-Rest-Server-Template
 
-### This project is a Node Api Rest Server Template and should be use to quick start rest servers projects.
+This project is a Node Api Rest Server Template and should be use to quick start rest servers projects.
 
 ### How to start
 1. Clone the repository.
@@ -14,6 +14,7 @@
 3) Socket.io
 4) Mongoose
 5) JWT
+6) Jest
 
 ### Project Architecture
 The project is structured in a MVC pattern, with the following folders:
