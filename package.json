@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node --env-file environments/.env app.js",
     "dev": "node --env-file environments/.env --watch app.js",
+    "docker": "docker-compose up -d",
     "test": "jest --detectOpenHandles",
     "coverage": "jest --collect-coverage"
   },
