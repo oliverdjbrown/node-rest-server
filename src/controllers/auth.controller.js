@@ -3,9 +3,9 @@ const { comparePassword } = require("../../helpers");
 const { generateJWT } = require("../../helpers");
 const { googleVerify } = require("../../helpers");
 
-const User = require("../models");
+const { User } = require("../models");
 const {
-  contactAdmin,  
+  contactAdmin,
   invalidUserOrPassword,
   invalidUser,
 } = require("../../constants");
@@ -15,9 +15,9 @@ const login = async (req, res = response) => {
 
   try {
     const user = await User.findOne({ email });
-    
+
     if (!user) return res.status(400).json(invalidUserOrPassword);
-    
+
     if (!user.state) return res.status(400).json(invalidUserOrPassword);
 
     if (!comparePassword(password, user.password))
@@ -31,7 +31,7 @@ const login = async (req, res = response) => {
     });
   } catch (error) {
     console.log(error);
-    return res.status(500).json(status50X);
+    return res.status(500).json("");
   }
 };
 

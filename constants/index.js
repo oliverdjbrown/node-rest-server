@@ -3,5 +3,5 @@ const httpResponses = require('./messages/http-responses');
 
 module.exports = {
     api,
-    httpResponses,
+    ...httpResponses,
 }

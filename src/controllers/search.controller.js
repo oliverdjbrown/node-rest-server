@@ -1,11 +1,9 @@
 const { response } = require("express");
 const { ObjectId } = require("mongoose").Types;
-const { collectionExist, httpResponses } = require("../../constants");
+const { collectionExist, status503 } = require("../../constants");
 const { User, Category, Product } = require("../models");
 
 const allowedCollections = ["users", "categories", "products", "roles"];
-
-const { status503 } = httpResponses;
 
 const searchUsers = async (term = "", res = response) => {
   const isMongoId = ObjectId.isValid(term);

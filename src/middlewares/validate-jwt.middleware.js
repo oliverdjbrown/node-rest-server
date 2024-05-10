@@ -1,9 +1,7 @@
 const { response } = require("express");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
-const { httpResponses } = require("../../constants");
-
-const { status401 } = httpResponses;
+const { status401 } = require("../../constants");
 
 const validateJWT = async (req, res = response, next) => {
   const token = req.header("authorization")?.slice(7);
