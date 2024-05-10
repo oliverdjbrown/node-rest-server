@@ -2,7 +2,7 @@
   "name": "node-rest-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node --env-file environments/.env app.js",
     "dev": "node --env-file environments/.env --watch app.js",
@@ -15,15 +15,15 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "cloudinary": "^2.1.0",
+    "cloudinary": "^2.2.0",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "express-fileupload": "^1.5.0",
     "express-list-endpoints": "^7.1.0",
     "express-validator": "^7.0.1",
-    "google-auth-library": "^9.8.0",
+    "google-auth-library": "^9.9.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.3.2",
+    "mongoose": "^8.3.4",
     "socket.io": "^4.7.5",
     "uuid": "^9.0.1"
   },
