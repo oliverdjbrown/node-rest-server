@@ -6,7 +6,7 @@ const { httpResponses } = require("../../constants");
 const { status401 } = httpResponses;
 
 const validateJWT = async (req, res = response, next) => {
-  const token = req.header("authorization").slice(7);
+  const token = req.header("authorization")?.slice(7);
 
   try {
     const { uid } = jwt.verify(token, process.env.JWT_KEY);
